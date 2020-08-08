@@ -1,0 +1,2 @@
+cd ../IRM.WebLeilao.Data
+dotnet ef --startup-project ../IRM.WebLeilao.Api migrations add "Inicial"

@@ -1,0 +1,18 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using IRM.WebLeilao.Domain.Models;
+
+namespace IRM.WebLeilao.Data.Mappings
+{
+    public class BlogMapping : IEntityTypeConfiguration<Blog>
+    {
+        public void Configure(EntityTypeBuilder<Blog> builder)
+        {
+            builder.Property(c => c.Url)
+                .HasColumnName("url")
+                .HasMaxLength(100)
+                .IsRequired();
+
+        }
+    }
+}

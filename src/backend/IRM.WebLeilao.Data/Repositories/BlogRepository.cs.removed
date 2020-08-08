@@ -1,0 +1,41 @@
+using System;
+using System.Threading.Tasks;
+using IRM.WebLeilao.Data.Patterns.Repository;
+using IRM.WebLeilao.Data.Patterns.UnitOfWork;
+using IRM.WebLeilao.Domain.Models;
+
+namespace IRM.WebLeilao.Api.Services
+{
+    public class BlogRepository
+    {
+        private readonly IUnitOfWork _uow;
+        private readonly IRepository<Blog> _repo;
+
+        public BlogRepository(IUnitOfWork unit, IRepository<Blog> repo)
+        {
+            _uow = unit;
+            _repo = repo;
+        }
+
+        public void Incluir(Blog entity)
+        {
+            _repo.Incluir(entity);
+        }
+
+        public void Alterar(Blog entity)
+        {
+            _repo.Alterar(entity);
+        }
+
+        public void Excluir(Guid id)
+        {
+            _repo.Excluir(id);
+        }
+
+        public async Task<Blog> ObterPorId(Guid id)
+        {
+            return await _repo.ObterPorId(id);
+        }
+
+    }
+}
