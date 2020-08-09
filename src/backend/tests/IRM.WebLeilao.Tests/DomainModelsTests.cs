@@ -1,7 +1,7 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using IRM.WebLeilao.Domain.Models;
+﻿using IRM.WebLeilao.Api.Domain.Models;
+using IRM.WebLeilao.Api.Domain.ValueObjects;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using IRM.WebLeilao.Domain.ValueObjects;
 
 namespace IRM.WebLeilao.Tests
 {

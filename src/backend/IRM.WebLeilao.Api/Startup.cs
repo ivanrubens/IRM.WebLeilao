@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NetDevPack.Identity.User;
 using IRM.WebLeilao.Api.Configurations;
-using IRM.WebLeilao.Identity;
+using IRM.WebLeilao.Api.Identity;
 
 namespace IRM.WebLeilao.Api
 {

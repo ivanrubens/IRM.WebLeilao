@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using IRM.WebLeilao.Domain.ValueObjects;
+using IRM.WebLeilao.Api.Domain.ValueObjects;
 
 namespace IRM.WebLeilao.Tests
 {

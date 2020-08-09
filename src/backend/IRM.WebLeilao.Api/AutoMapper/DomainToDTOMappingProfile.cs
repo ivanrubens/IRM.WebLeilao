@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using IRM.WebLeilao.Api.DTOs;
-using IRM.WebLeilao.Domain.Models;
+using IRM.WebLeilao.Api.Domain.Models;
 
 namespace IRM.WebLeilao.Api.AutoMapper
 {

@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\IRM.WebLeilao.Domain\IRM.WebLeilao.Domain.csproj" />
+    <ProjectReference Include="..\..\IRM.WebLeilao.Api\IRM.WebLeilao.Api.csproj" />
   </ItemGroup>
 
 </Project>

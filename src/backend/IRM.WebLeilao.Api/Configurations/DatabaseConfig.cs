@@ -2,7 +2,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using IRM.WebLeilao.Data.Context;
+using IRM.WebLeilao.Api.Data.Context;
 
 namespace IRM.WebLeilao.Api.Configurations
 {
