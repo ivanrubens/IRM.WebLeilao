@@ -18,6 +18,7 @@ ARQUITETURA
 			- Flunt (validations)
 			- Identity
 			- NetDevPack
+			- Dapper
 
 		- Outros
 			- Testes unidade (MS Test)

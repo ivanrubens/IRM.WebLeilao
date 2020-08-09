@@ -4,17 +4,17 @@ using Flunt.Validations;
 
 namespace IRM.WebLeilao.Domain.ValueObjects
 {
-    public class CPF : Notifiable
+    public class CNPJ : Notifiable
     {
         public string Numero { get; private set; }
 
-        public CPF(string numero)
+        public CNPJ(string numero)
         {
 
             Numero = numero;
 
             AddNotifications(new Contract()
-                .IsCpf(numero, "CPF.Numero", "CPF Inválido.")
+                .IsCnpj(numero, "CNPJ.Numero", "CNPJ Inválido.")
             );
 
         }
