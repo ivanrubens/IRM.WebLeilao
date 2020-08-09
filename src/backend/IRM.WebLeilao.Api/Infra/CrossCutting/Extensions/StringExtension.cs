@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace IRM.WebLeilao.Api.Common.Extensions
+namespace IRM.WebLeilao.Api.Infra.CrossCutting.Extensions
 {
     public static class StringExtension
     {

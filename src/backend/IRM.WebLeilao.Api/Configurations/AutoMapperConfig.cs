@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
-using IRM.WebLeilao.Api.AutoMapper;
+using IRM.WebLeilao.Api.Application.AutoMapper;
 
 namespace IRM.WebLeilao.Api.Configurations
 {

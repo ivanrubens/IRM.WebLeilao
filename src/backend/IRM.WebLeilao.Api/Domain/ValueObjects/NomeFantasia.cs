@@ -1,7 +1,7 @@
 using Flunt.Notifications;
 using Flunt.Validations;
-using IRM.WebLeilao.Api.Common.Extensions;
-using IRM.WebLeilao.Api.Common.Helpers;
+using IRM.WebLeilao.Api.Infra.CrossCutting.Extensions;
+using IRM.WebLeilao.Api.Infra.CrossCutting.Helpers;
 
 namespace IRM.WebLeilao.Api.Domain.ValueObjects
 {

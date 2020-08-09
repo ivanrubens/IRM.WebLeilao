@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace IRM.WebLeilao.Api.Data.Context
+namespace IRM.WebLeilao.Api.Infra.Data.Context
 {
     public sealed class WebLeilaoContext : DbContext
     {

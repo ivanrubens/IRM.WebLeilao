@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using IRM.WebLeilao.Api.Domain.Models;
 
-namespace IRM.WebLeilao.Api.Data.Mappings
+namespace IRM.WebLeilao.Api.Infra.Data.Mappings
 {
     public class BaseMapping<T> : IEntityTypeConfiguration<T> where T : EntityBase
     {

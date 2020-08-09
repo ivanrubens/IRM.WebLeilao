@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace IRM.WebLeilao.Api.Data.Patterns.Repository
+namespace IRM.WebLeilao.Api.Infra.Data.Patterns.Repository
 {
     public abstract class Repository<TEntity> : IRepository<TEntity>
         where TEntity : class

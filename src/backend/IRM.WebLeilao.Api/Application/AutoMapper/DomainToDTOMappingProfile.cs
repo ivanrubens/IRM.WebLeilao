@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
-using IRM.WebLeilao.Api.DTOs;
-using IRM.WebLeilao.Api.Domain.Models;
 
-namespace IRM.WebLeilao.Api.AutoMapper
+namespace IRM.WebLeilao.Api.Application.AutoMapper
 {
     public class DomainToDTOMappingProfile : Profile
     {

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace IRM.WebLeilao.Api.Common.Helpers
+namespace IRM.WebLeilao.Api.Infra.CrossCutting.Helpers
 {
     public static class ImportacaoHelper
     {

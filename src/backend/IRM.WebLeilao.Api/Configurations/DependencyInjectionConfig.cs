@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using IRM.WebLeilao.Api.Data.Context;
+using IRM.WebLeilao.Api.Infra.Data.Context;
 
 namespace IRM.WebLeilao.Api.Configurations
 {

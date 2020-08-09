@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace IRM.WebLeilao.Api.Common.Helpers
+namespace IRM.WebLeilao.Api.Infra.CrossCutting.Helpers
 {
     public class StringHelper
     {

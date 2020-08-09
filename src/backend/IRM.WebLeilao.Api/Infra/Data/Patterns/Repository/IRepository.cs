@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace IRM.WebLeilao.Api.Data.Patterns.Repository
+namespace IRM.WebLeilao.Api.Infra.Data.Patterns.Repository
 {
     public interface IRepository<TEntity> where TEntity : class
     {
