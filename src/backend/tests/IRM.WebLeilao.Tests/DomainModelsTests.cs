@@ -80,7 +80,11 @@ namespace IRM.WebLeilao.Tests
         [TestMethod]
         public void Leilao_Valid()
         {
+            var leilao = new Leilao(nomeGeral, 1, false, usuarioResponsavel, DateTime.Today, DateTime.Today.AddDays(3));
 
+            Assert.AreEqual(leilao.Valid, true);
+            Assert.AreEqual(leilao.Invalid, false);
+            Assert.AreEqual(0, leilao.Notifications.Count);
         }
         #endregion
 

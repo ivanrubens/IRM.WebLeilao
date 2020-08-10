@@ -42,7 +42,7 @@ namespace IRM.WebLeilao.Api.Domain.Models
 
             AddNotifications(new Contract()
                 .IsGreaterThan(ValorInicial, 0, "Leilao.ValorInicial", "Precisa ser maior que 0.")
-                .IsGreaterOrEqualsThan(DataAbertura, DateTime.Now, "Leilao.DataAbertura", "Precisa ser maior ou igual à Data de hoje.")
+                .IsGreaterOrEqualsThan(DataAbertura, DateTime.Today, "Leilao.DataAbertura", "Precisa ser maior ou igual à Data de hoje.")
                 .IsGreaterOrEqualsThan(DataFinalizacao, DataAbertura, "Leilao.DataFinalizacao", "Precisa ser maior ou igual à Data de Abertura.")
             );
         }
