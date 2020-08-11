@@ -20,5 +20,19 @@ namespace IRM.WebLeilao.Api.Domain.Models
         }
 
         public abstract void ValidarEntidade();
+
+        public void Inativar(Guid usuarioId)
+        {
+            Ativo = false;
+            AlteracaoTimestamp = DateTime.Now;
+            AlteracaoUsuarioId = usuarioId;
+        }
+
+        public void Ativar(Guid usuarioId)
+        {
+            Ativo = true;
+            AlteracaoTimestamp = DateTime.Now;
+            AlteracaoUsuarioId = usuarioId;
+        }
     }
 }

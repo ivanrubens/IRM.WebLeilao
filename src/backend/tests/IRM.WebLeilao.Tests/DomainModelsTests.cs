@@ -12,24 +12,27 @@ namespace IRM.WebLeilao.Tests
         private NomePessoa nomePessoa;
         private Pessoa pessoa;
         private Guid usuarioId;
-        private Usuario usuarioResponsavel;
+        private Usuario usuario;
         private NomeGeral nomeGeral;
-
+        private Guid usuarioLogadoId;
+        
         public DomainModelsTests()
         {
             cpf = new CPF("67763044322");
             nomePessoa = new NomePessoa("Fulano de", "Tal");
             pessoa = new Pessoa(cpf, nomePessoa);
             usuarioId = Guid.NewGuid();
-            usuarioResponsavel = new Usuario(pessoa, usuarioId);
+            usuario = new Usuario(pessoa, usuarioId);
             nomeGeral = new NomeGeral("Leilão 1");
+
+            usuarioLogadoId = Guid.NewGuid();
         }
 
         #region * LEILAO * 
         [TestMethod]
         public void Leilao_ValorInicial_Negativo_Invalid()
         {
-            var leilao = new Leilao(nomeGeral, -1, false, usuarioResponsavel, DateTime.Today, DateTime.Today.AddDays(1));
+            var leilao = new Leilao(nomeGeral, -1, false, usuario, DateTime.Today, DateTime.Today.AddDays(1));
 
             Assert.AreEqual(leilao.Valid, false);
             Assert.AreEqual(leilao.Invalid, true);
@@ -39,7 +42,7 @@ namespace IRM.WebLeilao.Tests
         [TestMethod]
         public void Leilao_ValorInicial_Zerado_Invalid()
         {
-            var leilao = new Leilao(nomeGeral, 0, false, usuarioResponsavel, DateTime.Today, DateTime.Today.AddDays(1));
+            var leilao = new Leilao(nomeGeral, 0, false, usuario, DateTime.Today, DateTime.Today.AddDays(1));
 
             Assert.AreEqual(leilao.Valid, false);
             Assert.AreEqual(leilao.Invalid, true);
@@ -49,7 +52,7 @@ namespace IRM.WebLeilao.Tests
         [TestMethod]
         public void Leilao_DataAbertura_MenorQue_DataAtual_Invalid()
         {
-            var leilao = new Leilao(nomeGeral, 1, false, usuarioResponsavel, DateTime.Today.AddDays(-1), DateTime.Today.AddDays(1));
+            var leilao = new Leilao(nomeGeral, 1, false, usuario, DateTime.Today.AddDays(-1), DateTime.Today.AddDays(1));
 
             Assert.AreEqual(leilao.Valid, false);
             Assert.AreEqual(leilao.Invalid, true);
@@ -60,7 +63,7 @@ namespace IRM.WebLeilao.Tests
         [TestMethod]
         public void Leilao_DataFechamento_MenorQue_DataAbertura_Invalid()
         {
-            var leilao = new Leilao(nomeGeral, 1, false, usuarioResponsavel, DateTime.Today, DateTime.Today.AddDays(-1));
+            var leilao = new Leilao(nomeGeral, 1, false, usuario, DateTime.Today, DateTime.Today.AddDays(-1));
 
             Assert.AreEqual(leilao.Valid, false);
             Assert.AreEqual(leilao.Invalid, true);
@@ -70,7 +73,7 @@ namespace IRM.WebLeilao.Tests
         [TestMethod]
         public void Leilao_DataAbertura_E_DataFechamento_Iguais_Valid()
         {
-            var leilao = new Leilao(nomeGeral, 1, false, usuarioResponsavel, DateTime.Today, DateTime.Today);
+            var leilao = new Leilao(nomeGeral, 1, false, usuario, DateTime.Today, DateTime.Today);
 
             Assert.AreEqual(leilao.Valid, true);
             Assert.AreEqual(leilao.Invalid, false);
@@ -80,7 +83,7 @@ namespace IRM.WebLeilao.Tests
         [TestMethod]
         public void Leilao_Valid()
         {
-            var leilao = new Leilao(nomeGeral, 1, false, usuarioResponsavel, DateTime.Today, DateTime.Today.AddDays(3));
+            var leilao = new Leilao(nomeGeral, 1, false, usuario, DateTime.Today, DateTime.Today.AddDays(3));
 
             Assert.AreEqual(leilao.Valid, true);
             Assert.AreEqual(leilao.Invalid, false);
@@ -88,5 +91,29 @@ namespace IRM.WebLeilao.Tests
         }
         #endregion
 
+        #region * LOGIN *
+        [TestMethod]
+        public void Login_Autenticar_UsuarioInativo_False()
+        {
+            pessoa.Inativar(usuarioLogadoId);
+            usuario.Autenticar();
+
+            Assert.AreEqual(usuario.Valid, false);
+            Assert.AreEqual(usuario.Invalid, true);
+            Assert.AreEqual(usuario.SessaoId, "");
+        }
+
+        [TestMethod]
+        public void Login_Autenticar_UsuarioAtivo_True()
+        {
+            usuario.Ativar(usuarioLogadoId);
+            usuario.Autenticar();
+
+            Assert.AreEqual(usuario.Valid, true);
+            Assert.AreEqual(usuario.Invalid, false);
+            Assert.IsTrue(usuario.SessaoId.Length == 10);
+        }
+
+        #endregion
     }
 }

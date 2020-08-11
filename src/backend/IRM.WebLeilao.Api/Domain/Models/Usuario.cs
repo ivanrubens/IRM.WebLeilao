@@ -5,7 +5,8 @@ namespace IRM.WebLeilao.Api.Domain.Models
     public class Usuario : EntityBase
     {
         public Pessoa Pessoa { get; private set; }
-        public Guid UserId { get; set; }
+        public Guid UserId { get; private set; }
+        public string SessaoId { get; private set; }
 
         protected Usuario() { }
 
@@ -25,5 +26,20 @@ namespace IRM.WebLeilao.Api.Domain.Models
             }
 
         }
+
+        public void Autenticar()
+        {
+            if (!this.Ativo)
+            {
+                AddNotification("Usuario.Autenticar", "Não é possível autenticar - Usuário Inativo.");
+                SessaoId = "";
+            }
+            else
+            {
+                SessaoId = Guid.NewGuid().ToString().Replace("-", "").Substring(1, 10).ToUpper();
+            }
+
+        }
+
     }
 }
