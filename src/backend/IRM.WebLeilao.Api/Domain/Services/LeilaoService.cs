@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using Flunt.Notifications;
@@ -19,24 +20,29 @@ namespace IRM.WebLeilao.Api.Domain.Services
             _leilaoRepository = leilaoRepository;
         }
 
-        public async Task Incluir(Leilao entity)
+        public async Task<Leilao> Incluir(Leilao leilao)
         {
-            await _leilaoRepository.Incluir(entity);
+            return await _leilaoRepository.Incluir(leilao);
         }
 
-        public async Task Alterar(Leilao entity)
+        public async Task<Leilao> Alterar(Leilao leilao)
         {
-            await _leilaoRepository.Alterar(entity);
+            return await _leilaoRepository.Alterar(leilao);
         }
 
-        public async Task Excluir(Guid id)
+        public async Task<Leilao> Excluir(Guid id)
         {
-            await _leilaoRepository.Excluir(id);
+            return await _leilaoRepository.Excluir(id);
         }
 
         public async Task<Leilao> ObterPorId(Guid id)
         {
             return await _leilaoRepository.ObterPorId(id);
+        }
+
+        public async Task<IEnumerable<Leilao>> Obter()
+        {
+            return await _leilaoRepository.Obter();
         }
     }
 }

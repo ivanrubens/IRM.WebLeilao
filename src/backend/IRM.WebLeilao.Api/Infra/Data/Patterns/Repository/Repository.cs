@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
@@ -44,5 +45,9 @@ namespace IRM.WebLeilao.Api.Infra.Data.Patterns.Repository
             return entity;
         }
 
+        public async Task<IEnumerable<TEntity>> Obter()
+        {
+            return await _dbContext.Set<TEntity>().ToListAsync();
+        }
     }
 }

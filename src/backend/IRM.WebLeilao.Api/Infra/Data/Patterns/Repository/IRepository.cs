@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace IRM.WebLeilao.Api.Infra.Data.Patterns.Repository
@@ -9,5 +10,6 @@ namespace IRM.WebLeilao.Api.Infra.Data.Patterns.Repository
         Task<TEntity> Incluir(TEntity entity);
         Task<TEntity> Alterar(TEntity entity);
         Task<TEntity> Excluir(Guid id);
-      }
+        Task<IEnumerable<TEntity>> Obter();
+    }
 }

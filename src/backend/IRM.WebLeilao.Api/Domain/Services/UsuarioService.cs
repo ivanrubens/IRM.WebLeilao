@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using Flunt.Notifications;
@@ -19,19 +20,19 @@ namespace IRM.WebLeilao.Api.Domain.Services
             _usuarioRepository = usuarioRepository;
         }
 
-        public async Task Incluir(Usuario entity)
+        public async Task<Usuario> Incluir(Usuario entity)
         {
-            await _usuarioRepository.Incluir(entity);
+            return await _usuarioRepository.Incluir(entity);
         }
 
-        public async Task Alterar(Usuario entity)
+        public async Task<Usuario> Alterar(Usuario entity)
         {
-            await _usuarioRepository.Alterar(entity);
+            return await _usuarioRepository.Alterar(entity);
         }
 
-        public async Task Excluir(Guid id)
+        public async Task<Usuario> Excluir(Guid id)
         {
-            await _usuarioRepository.Excluir(id);
+            return await _usuarioRepository.Excluir(id);
         }
 
         public async Task<Usuario> ObterPorId(Guid id)
@@ -39,11 +40,15 @@ namespace IRM.WebLeilao.Api.Domain.Services
             return await _usuarioRepository.ObterPorId(id);
         }
 
+        public async Task<IEnumerable<Usuario>> Obter()
+        {
+            return await _usuarioRepository.Obter();
+        }
+
         public async Task<Usuario> Autenticar(Usuario usuario)
         {
-            // TODO: Pendencia
-            //var resul = await Task.Run(() => usuario.Autenticar());
-            return null;
+            await Task.FromResult(usuario.Autenticar());
+            return usuario;
         }
     }
 }

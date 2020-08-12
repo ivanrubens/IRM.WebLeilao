@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using Flunt.Notifications;
@@ -19,24 +20,29 @@ namespace IRM.WebLeilao.Api.Domain.Services
             _organizacaoRepository = organizacaoRepository;
         }
 
-        public async Task Incluir(Organizacao entity)
+        public async Task<Organizacao> Incluir(Organizacao entity)
         {
-            await _organizacaoRepository.Incluir(entity);
+            return await _organizacaoRepository.Incluir(entity);
         }
 
-        public async Task Alterar(Organizacao entity)
+        public async Task<Organizacao> Alterar(Organizacao entity)
         {
-            await _organizacaoRepository.Alterar(entity);
+            return await _organizacaoRepository.Alterar(entity);
         }
 
-        public async Task Excluir(Guid id)
+        public async Task<Organizacao> Excluir(Guid id)
         {
-            await _organizacaoRepository.ExcluirAsync(id);
+            return await _organizacaoRepository.ExcluirAsync(id);
         }
 
         public async Task<Organizacao> ObterPorId(Guid id)
         {
             return await _organizacaoRepository.ObterPorId(id);
+        }
+
+        public async Task<IEnumerable<Organizacao>> Obter()
+        {
+            return await _organizacaoRepository.Obter();
         }
     }
 }

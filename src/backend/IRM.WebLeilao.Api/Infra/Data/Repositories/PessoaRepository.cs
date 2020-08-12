@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using IRM.WebLeilao.Api.Domain.Models;
 using IRM.WebLeilao.Api.Infra.Data.Patterns.Repository;
@@ -14,24 +15,29 @@ namespace IRM.WebLeilao.Api.Infra.Data.Repositories
             _repo = repo;
         }
 
-        public async Task Incluir(Pessoa entity)
+        public async Task<Pessoa> Incluir(Pessoa entity)
         {
-            await _repo.Incluir(entity);
+            return await _repo.Incluir(entity);
         }
 
-        public async Task Alterar(Pessoa entity)
+        public async Task<Pessoa> Alterar(Pessoa entity)
         {
-            await _repo.Alterar(entity);
+            return await _repo.Alterar(entity);
         }
 
-        public async Task Excluir(Guid id)
+        public async Task<Pessoa> Excluir(Guid id)
         {
-            await _repo.Excluir(id);
+            return await _repo.Excluir(id);
         }
 
         public async Task<Pessoa> ObterPorId(Guid id)
         {
             return await _repo.ObterPorId(id);
+        }
+
+        public async Task<IEnumerable<Pessoa>> Obter()
+        {
+            return await _repo.Obter();
         }
     }
 }

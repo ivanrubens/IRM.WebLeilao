@@ -27,16 +27,18 @@ namespace IRM.WebLeilao.Api.Domain.Models
 
         }
 
-        public void Autenticar()
+        public bool Autenticar()
         {
             if (!this.Ativo)
             {
                 AddNotification("Usuario.Autenticar", "Não é possível autenticar - Usuário Inativo.");
                 SessaoId = "";
+                return false;
             }
             else
             {
                 SessaoId = Guid.NewGuid().ToString().Replace("-", "").Substring(1, 10).ToUpper();
+                return true;
             }
 
         }
