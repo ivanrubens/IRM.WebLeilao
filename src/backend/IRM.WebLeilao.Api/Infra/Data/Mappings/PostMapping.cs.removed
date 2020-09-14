@@ -1,7 +1,0 @@
-namespace IRM.WebLeilao.Data.Mappings
-{
-    public class PostMapping
-    {
-        
-    }
-}

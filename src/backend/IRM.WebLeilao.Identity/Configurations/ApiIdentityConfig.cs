@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Reflection;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NetDevPack.Identity;
@@ -12,8 +13,8 @@ namespace IRM.WebLeilao.Api.Identity
         {
             // Default EF Context for Identity (inside of the NetDevPack.Identity)
             services.AddIdentityEntityFrameworkContextConfiguration(options =>
-                options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"),
-                    b => b.MigrationsAssembly("IRM.WebLeilao.Identity")));
+                   options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"),
+                       b => b.MigrationsAssembly("IRM.WebLeilao.Identity")));
 
             // Default Identity configuration from NetDevPack.Identity
             services.AddIdentityConfiguration();

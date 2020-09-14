@@ -1,5 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using IRM.WebLeilao.Api.Domain.ValueObjects;
+﻿using IRM.WebLeilao.Api.Domain.ValueObjects;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace IRM.WebLeilao.Tests
 {
@@ -294,7 +294,7 @@ namespace IRM.WebLeilao.Tests
 
         }
 
-       [TestMethod]
+        [TestMethod]
         public void RazaoSocial_SemDuploEspacos_Valid()
         {
             var nome = new RazaoSocial(" João  D'ávila   da  Silva  ");
@@ -375,7 +375,7 @@ namespace IRM.WebLeilao.Tests
 
         }
 
-       [TestMethod]
+        [TestMethod]
         public void NomeFantasia_SemDuploEspacos_Valid()
         {
             var nome = new NomeFantasia(" João  D'ávila   da  Silva  ");

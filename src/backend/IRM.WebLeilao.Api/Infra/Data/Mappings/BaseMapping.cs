@@ -20,7 +20,7 @@ namespace IRM.WebLeilao.Api.Infra.Data.Mappings
 
             builder.Property(x => x.InclusaoUsuarioId)
                 .HasColumnName("inclusao_usuario_id")
-                .IsRequired(false);
+                .IsRequired(true);
 
             builder.Property(x => x.AlteracaoTimestamp)
                 .HasColumnName("alteracao_timestamp")

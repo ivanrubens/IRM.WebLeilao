@@ -2,7 +2,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using IRM.WebLeilao.Api.Infra.Data.Context;
+using IRM.WebLeilao.Api.Infra.Data;
 
 namespace IRM.WebLeilao.Api.Configurations
 {
@@ -16,12 +16,10 @@ namespace IRM.WebLeilao.Api.Configurations
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 
-            ConnectionString = configuration.GetConnectionString("WebLeilaoConnection");
+            ConnectionString = configuration.GetConnectionString("DefaultConnection");
 
             services.AddDbContext<WebLeilaoContext>(options =>
                 options.UseNpgsql(ConnectionString));
-
-            //services.UseNpgsql(DatabaseConfig.ConnectionString, x => x.MigrationsHistoryTable("__EFMigrationsHistory", schemaDefault));
 
         }
     }
