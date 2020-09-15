@@ -1,7 +1,11 @@
-// DBContext
-dotnet ef migrations add Initial --context NetDevPackAppDbContext --project ../IRM.WebLeilao.Identity/IRM.WebLeilao.Identity.csproj 
+// IDENTITY
+cd ~/dev/irm/IRM.WebLeilao/src/backend/IRM.WebLeilao.Api
+dotnet ef migrations add "Identity Inicial" --context NetDevPackAppDbContext --project ../IRM.WebLeilao.Identity/IRM.WebLeilao.Identity.csproj 
 dotnet ef migrations script -o ../IRM.WebLeilao.Identity/script-entity.sql --context NetDevPackAppDbContext --project ../IRM.WebLeilao.Identity/IRM.WebLeilao.Identity.csproj 
 dotnet ef database update --context NetDevPackAppDbContext --project ../IRM.WebLeilao.Identity/IRM.WebLeilao.Identity.csproj 
 
-cd ../IRM.WebLeilao.Data
-dotnet ef --startup-project ../IRM.WebLeilao.Api migrations add "Inicial"
+// WEB LEILAO/API
+cd ~/dev/irm/IRM.WebLeilao/src/backend/IRM.WebLeilao.Api
+dotnet ef migrations add "Webleilão Inicial" --context WebLeilaoContext --output-dir "Infra/Data/Migrations"
+dotnet ef migrations script -o "script.sql" --context WebLeilaoContext 
+dotnet ef database update --context WebLeilaoContext 

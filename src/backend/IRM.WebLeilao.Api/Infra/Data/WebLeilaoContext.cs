@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Flunt.Notifications;
 using IRM.WebLeilao.Api.Configurations;
 using IRM.WebLeilao.Api.Domain.Models;
-using IRM.WebLeilao.Api.Domain.ValueObjects;
 using IRM.WebLeilao.Api.Infra.Data.Mappings;
 using Microsoft.EntityFrameworkCore;
 
