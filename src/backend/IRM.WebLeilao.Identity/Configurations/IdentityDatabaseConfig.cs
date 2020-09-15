@@ -1,13 +1,12 @@
-﻿using System.Reflection;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NetDevPack.Identity;
 using NetDevPack.Identity.Jwt;
 
-namespace IRM.WebLeilao.Api.Identity
+namespace IRM.WebLeilao.Api.Identity.Configurations
 {
-    public static class ApiIdentityConfig
+    public static class IdentityDatabaseConfig
     {
         public static void AddApiIdentityConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
@@ -20,7 +19,7 @@ namespace IRM.WebLeilao.Api.Identity
             services.AddIdentityConfiguration();
 
             // Default JWT configuration from NetDevPack.Identity
-            services.AddJwtConfiguration(configuration, "AppSettings");
+            //services.AddJwtConfiguration(configuration, "AppSettings");
         }
     }
 }

@@ -1,10 +1,11 @@
 using IRM.WebLeilao.Api.Configurations;
-using IRM.WebLeilao.Api.Identity;
+using IRM.WebLeilao.Api.Identity.Configurations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NetDevPack.Identity;
 using NetDevPack.Identity.User;
 
 namespace IRM.WebLeilao.Api
@@ -57,6 +58,8 @@ namespace IRM.WebLeilao.Api
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseAuthConfiguration();
 
             app.UseAuthorization();
 
