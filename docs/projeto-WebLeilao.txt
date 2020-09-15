@@ -17,6 +17,7 @@ ARQUITETURA
 			- EF Core
 			- Flunt (validations)
 			- Identity
+			- JWT
 			- NetDevPack
 			- Dapper
 
@@ -36,10 +37,8 @@ ESTRUTURA FISICA/LOGICA
 		. src
 			. back
 				. IRM.Leilao.Api
-				. IRM.Leilao.Domain
-				. IRM.Leilao.Service
-				. IRM.Leilao.Infra
-					. IRM.Leilao.Data
+				. IRM.Leilao.Identity
+				
 			. front
 				. IRM.Leilao.Spa
 			

@@ -1,5 +1,0 @@
-// DBContext
-dotnet ef migrations add Initial --context NetDevPackAppDbContext --project ../IRM.WebLeilao.Identity/IRM.WebLeilao.Identity.csproj 
-
-cd ../IRM.WebLeilao.Data
-dotnet ef --startup-project ../IRM.WebLeilao.Api migrations add "Inicial"
