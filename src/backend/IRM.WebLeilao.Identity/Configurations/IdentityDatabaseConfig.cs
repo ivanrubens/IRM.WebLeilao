@@ -19,7 +19,7 @@ namespace IRM.WebLeilao.Api.Identity.Configurations
             services.AddIdentityConfiguration();
 
             // Default JWT configuration from NetDevPack.Identity
-            //services.AddJwtConfiguration(configuration, "AppSettings");
+            services.AddJwtConfiguration(configuration, "AppSettings");
         }
     }
 }

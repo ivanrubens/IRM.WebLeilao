@@ -22,7 +22,7 @@ namespace IRM.WebLeilao.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-             // WebAPI Config
+            // WebAPI Config
             services.AddControllers();
 
             // Setting DBContexts
@@ -54,6 +54,12 @@ namespace IRM.WebLeilao.Api
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSwagger();
+            app.UseSwaggerUI(x =>
+            {
+                x.SwaggerEndpoint(url: "/swagger/v1/swagger.json", name: "v1");
+            });
 
             app.UseHttpsRedirection();
 

@@ -16,9 +16,9 @@ namespace IRM.WebLeilao.Api.Configurations
                 s.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "SESMA Template",
-                    Description = "SESMA Template API Swagger",
-                    Contact = new OpenApiContact { Name = "IRM.WebLeilao", Email = "sesma.ti.dev@saude.ma.gov.br", Url = new Uri("http://saude.ma.gov.br") },
+                    Title = "IRM.WebLeilao",
+                    Description = "IRM.WebLeilao API Swagger",
+                    Contact = new OpenApiContact { Name = "IRM.WebLeilao", Email = "ivanrubens.dev@ivanrubens.dev.net.br", Url = new Uri("http://ivanrubens.dev.net.br") },
                     //License = new OpenApiLicense { Name = "MIT", Url = new Uri("https://github.com/EduardoPires/EquinoxProject/blob/master/LICENSE") }
                 });
 
