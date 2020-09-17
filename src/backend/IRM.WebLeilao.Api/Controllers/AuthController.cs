@@ -11,8 +11,7 @@ using NetDevPack.Identity.Model;
 namespace IRM.WebLeilao.Api.Controllers
 {
     [ApiController]
-    [Route("api/leilao")]
-    [Authorize("Admin,Cadastro")]
+    [Route("api/auth")]
     public class AuthController : MainController
     {
         private readonly SignInManager<IdentityUser> _signInManager;

@@ -5,14 +5,14 @@ using AutoMapper;
 using IRM.WebLeilao.Api.Domain.Models;
 using IRM.WebLeilao.Api.Domain.Services;
 using IRM.WebLeilao.Api.Infra.CrossCutting.Extensions;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using NetDevPack.Identity.Authorization;
 
 namespace IRM.WebLeilao.Api.Controllers
 {
     [ApiController]
     [Route("api/usuario")]
-    [Authorize("Admin,Cadastro")]
+    [CustomAuthorize("Cadastros", "True")]
     public class UsuarioController : ControllerBase
     {
         protected readonly IMapper _mapper;
