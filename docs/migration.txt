@@ -6,6 +6,6 @@ dotnet ef database update --context NetDevPackAppDbContext --project ../IRM.WebL
 
 // WEB LEILAO/API
 cd ~/dev/irm/IRM.WebLeilao/src/backend/IRM.WebLeilao.Api
-dotnet ef migrations add "Webleilão Inicial" --context WebLeilaoContext --output-dir "Infra/Data/Migrations"
+dotnet ef migrations add "Inicial" --context WebLeilaoContext --output-dir "Infra/Data/Migrations"
 dotnet ef migrations script -o "script.sql" --context WebLeilaoContext 
 dotnet ef database update --context WebLeilaoContext 
