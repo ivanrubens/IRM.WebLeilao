@@ -24,8 +24,6 @@ namespace IRM.WebLeilao.Api.Infra.Data
             modelBuilder.HasDefaultSchema(schemaDefault);
 
             modelBuilder.Ignore<Notification>();
-            //modelBuilder.Entity<Organizacao>().OwnsOne(typeof(CNPJ), "CNPJ");
-            modelBuilder.Entity<Organizacao>().OwnsOne(p => p.CNPJ);
             modelBuilder.Entity<Organizacao>().OwnsOne(p => p.CNPJ);
             modelBuilder.Entity<Organizacao>().OwnsOne(p => p.NomeFantasia);
             modelBuilder.Entity<Organizacao>().OwnsOne(p => p.RazaoSocial);
@@ -36,13 +34,14 @@ namespace IRM.WebLeilao.Api.Infra.Data
             //ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
             //ChangeTracker.AutoDetectChangesEnabled = false;
 
+            modelBuilder.ApplyConfiguration(new LeilaoMapping());
             modelBuilder.ApplyConfiguration(new OrganizacaoMapping());
-            //modelBuilder.ApplyConfigurationsFromAssembly(typeof(WebLeilaoContext).Assembly); // Novo método para mapeamento (via reflection)
+            modelBuilder.ApplyConfiguration(new PessoaMapping());
+            modelBuilder.ApplyConfiguration(new UsuarioMapping());
 
         }
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            //options.UseNpgsql("Host=localhost; Database=webleilao; Username=postgres; Password=123");
             options.UseNpgsql(DatabaseConfig.ConnectionString, x => x.MigrationsHistoryTable("__EFMigrationsHistory", schemaDefault));
         }
 

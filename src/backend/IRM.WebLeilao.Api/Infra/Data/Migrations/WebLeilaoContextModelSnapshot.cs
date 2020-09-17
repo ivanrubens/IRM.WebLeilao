@@ -23,50 +23,67 @@ namespace IRM.WebLeilao.Api.Infra.Data.Migrations
             modelBuilder.Entity("IRM.WebLeilao.Api.Domain.Models.Leilao", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
+                        .HasColumnName("id")
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("AlteracaoTimestamp")
+                        .HasColumnName("alteracao_timestamp")
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("AlteracaoUsuarioId")
+                        .HasColumnName("alteracao_usuario_id")
                         .HasColumnType("uuid");
 
                     b.Property<bool>("Ativo")
+                        .HasColumnName("ativo")
                         .HasColumnType("boolean");
 
                     b.Property<DateTime>("DataAbertura")
+                        .HasColumnName("data_abertura")
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<DateTime>("DataFinalizacao")
+                        .HasColumnName("data_finalizacao")
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<DateTime?>("ExclusaoTimestamp")
+                        .HasColumnName("exclusao_timestamp")
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("ExclusaoUsuarioId")
+                        .HasColumnName("exclusao_usuario_id")
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("InclusaoTimestamp")
-                        .HasColumnType("timestamp without time zone");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("inclusao_timestamp")
+                        .HasColumnType("timestamp without time zone")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                     b.Property<Guid>("InclusaoUsuarioId")
+                        .HasColumnName("inclusao_usuario_id")
                         .HasColumnType("uuid");
 
                     b.Property<bool>("ItemUsado")
+                        .HasColumnName("item_usado")
                         .HasColumnType("boolean");
 
                     b.Property<Guid?>("UsuarioResponsavelId")
                         .HasColumnType("uuid");
 
                     b.Property<decimal>("ValorInicial")
+                        .HasColumnName("valor_inicial")
                         .HasColumnType("numeric");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Ativo");
+
+                    b.HasIndex("InclusaoTimestamp");
+
                     b.HasIndex("UsuarioResponsavelId");
 
-                    b.ToTable("Leilao");
+                    b.ToTable("leilao");
                 });
 
             modelBuilder.Entity("IRM.WebLeilao.Api.Domain.Models.Organizacao", b =>
@@ -117,76 +134,109 @@ namespace IRM.WebLeilao.Api.Infra.Data.Migrations
             modelBuilder.Entity("IRM.WebLeilao.Api.Domain.Models.Pessoa", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
+                        .HasColumnName("id")
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("AlteracaoTimestamp")
+                        .HasColumnName("alteracao_timestamp")
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("AlteracaoUsuarioId")
+                        .HasColumnName("alteracao_usuario_id")
                         .HasColumnType("uuid");
 
                     b.Property<bool>("Ativo")
+                        .HasColumnName("ativo")
                         .HasColumnType("boolean");
 
                     b.Property<DateTime?>("ExclusaoTimestamp")
+                        .HasColumnName("exclusao_timestamp")
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("ExclusaoUsuarioId")
+                        .HasColumnName("exclusao_usuario_id")
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("InclusaoTimestamp")
-                        .HasColumnType("timestamp without time zone");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("inclusao_timestamp")
+                        .HasColumnType("timestamp without time zone")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                     b.Property<Guid>("InclusaoUsuarioId")
+                        .HasColumnName("inclusao_usuario_id")
                         .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Pessoa");
+                    b.HasIndex("Ativo");
+
+                    b.HasIndex("InclusaoTimestamp");
+
+                    b.ToTable("pessoa");
                 });
 
             modelBuilder.Entity("IRM.WebLeilao.Api.Domain.Models.Usuario", b =>
                 {
                     b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
+                        .HasColumnName("id")
                         .HasColumnType("uuid");
 
                     b.Property<DateTime?>("AlteracaoTimestamp")
+                        .HasColumnName("alteracao_timestamp")
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("AlteracaoUsuarioId")
+                        .HasColumnName("alteracao_usuario_id")
                         .HasColumnType("uuid");
 
                     b.Property<bool>("Ativo")
+                        .HasColumnName("ativo")
                         .HasColumnType("boolean");
 
                     b.Property<DateTime?>("ExclusaoTimestamp")
+                        .HasColumnName("exclusao_timestamp")
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<Guid?>("ExclusaoUsuarioId")
+                        .HasColumnName("exclusao_usuario_id")
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("InclusaoTimestamp")
-                        .HasColumnType("timestamp without time zone");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("inclusao_timestamp")
+                        .HasColumnType("timestamp without time zone")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                     b.Property<Guid>("InclusaoUsuarioId")
+                        .HasColumnName("inclusao_usuario_id")
                         .HasColumnType("uuid");
 
                     b.Property<Guid?>("PessoaId")
                         .HasColumnType("uuid");
 
                     b.Property<string>("SessaoId")
-                        .HasColumnType("text");
+                        .HasColumnName("sessao_id")
+                        .HasColumnType("character varying(150)")
+                        .HasMaxLength(150);
 
                     b.Property<Guid>("UserId")
+                        .HasColumnName("user_id")
                         .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Ativo");
+
+                    b.HasIndex("InclusaoTimestamp");
+
                     b.HasIndex("PessoaId");
 
-                    b.ToTable("Usuario");
+                    b.HasIndex("SessaoId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("usuario");
                 });
 
             modelBuilder.Entity("IRM.WebLeilao.Api.Domain.Models.Leilao", b =>
@@ -205,7 +255,7 @@ namespace IRM.WebLeilao.Api.Infra.Data.Migrations
 
                             b1.HasKey("LeilaoId");
 
-                            b1.ToTable("Leilao");
+                            b1.ToTable("leilao");
 
                             b1.WithOwner()
                                 .HasForeignKey("LeilaoId");
@@ -275,7 +325,7 @@ namespace IRM.WebLeilao.Api.Infra.Data.Migrations
 
                             b1.HasKey("PessoaId");
 
-                            b1.ToTable("Pessoa");
+                            b1.ToTable("pessoa");
 
                             b1.WithOwner()
                                 .HasForeignKey("PessoaId");
@@ -294,7 +344,7 @@ namespace IRM.WebLeilao.Api.Infra.Data.Migrations
 
                             b1.HasKey("PessoaId");
 
-                            b1.ToTable("Pessoa");
+                            b1.ToTable("pessoa");
 
                             b1.WithOwner()
                                 .HasForeignKey("PessoaId");

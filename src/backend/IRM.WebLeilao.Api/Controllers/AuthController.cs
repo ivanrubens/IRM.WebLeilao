@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using AspNetCore.Jwt.Sample.Controllers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -9,6 +10,9 @@ using NetDevPack.Identity.Model;
 
 namespace IRM.WebLeilao.Api.Controllers
 {
+    [ApiController]
+    [Route("api/leilao")]
+    [Authorize("Admin,Cadastro")]
     public class AuthController : MainController
     {
         private readonly SignInManager<IdentityUser> _signInManager;

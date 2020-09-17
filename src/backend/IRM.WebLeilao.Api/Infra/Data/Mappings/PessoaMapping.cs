@@ -4,12 +4,12 @@ using IRM.WebLeilao.Api.Domain.Models;
 
 namespace IRM.WebLeilao.Api.Infra.Data.Mappings
 {
-    public class OrganizacaoMapping : BaseMapping<Organizacao>
+    public class PessoaMapping : BaseMapping<Pessoa>
     {
-        public override void Configure(EntityTypeBuilder<Organizacao> builder)
+        public override void Configure(EntityTypeBuilder<Pessoa> builder)
         {
             base.Configure(builder);
-            builder.ToTable("organizacao");
+            builder.ToTable("pessoa");
 
             builder.HasIndex(i => i.Ativo);
         }
