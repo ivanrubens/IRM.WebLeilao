@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using IRM.WebLeilao.Api.Domain.Models;
-using IRM.WebLeilao.Api.Infra.Data.Patterns.Repository;
+using IRM.WebLeilao.Api.Infra.Data.Patterns.RepositoryPattern;
 
 namespace IRM.WebLeilao.Api.Infra.Data.Repositories
 {
@@ -10,7 +10,7 @@ namespace IRM.WebLeilao.Api.Infra.Data.Repositories
     {
         private readonly IRepository<Organizacao> _repo;
 
-        public OrganizacaoRepository(Patterns.Repository.IRepository<Organizacao> repo)
+        public OrganizacaoRepository(IRepository<Organizacao> repo)
         {
             _repo = repo;
         }

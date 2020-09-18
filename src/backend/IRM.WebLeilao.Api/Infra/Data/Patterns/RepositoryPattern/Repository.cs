@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace IRM.WebLeilao.Api.Infra.Data.Patterns.Repository
+namespace IRM.WebLeilao.Api.Infra.Data.Patterns.RepositoryPattern
 {
-    public abstract class Repository<TEntity> : IRepository<TEntity>
-        where TEntity : class
+    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         private readonly DbContext _dbContext;
         public Repository(DbContext dbContext)
