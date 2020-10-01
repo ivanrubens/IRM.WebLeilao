@@ -1,3 +1,4 @@
+using System;
 using IRM.WebLeilao.Api.Domain.ValueObjects;
 
 namespace IRM.WebLeilao.Api.Domain.Models
@@ -19,6 +20,11 @@ namespace IRM.WebLeilao.Api.Domain.Models
 
         public override void ValidarEntidade()
         {
+            if (this.Id == Guid.Empty)
+            {
+                AddNotification("Id", "Id não pode ser Empty");
+            }
+
             if (CPF.Invalid)
             {
                 AddNotifications(CPF.Notifications);
