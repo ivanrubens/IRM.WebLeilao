@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
+using IRM.WebLeilao.Api.Application.ViewModel;
 using IRM.WebLeilao.Api.Domain.Models;
 using IRM.WebLeilao.Api.Domain.Services;
-using IRM.WebLeilao.Api.Domain.ValueObjects;
 using IRM.WebLeilao.Api.Infra.CrossCutting.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using NetDevPack.Identity.Authorization;
@@ -27,10 +27,17 @@ namespace IRM.WebLeilao.Api.Controllers
         }
 
         [HttpPost("v1/incluir")]
-        public async Task<ActionResult> IncluirAsync([FromBody] Organizacao organizacao)
+        public async Task<ActionResult> IncluirAsync([FromBody] OrganizacaoViewModel organizacaoViewModel)
         {
             try
             {
+                var organizacao = _mapper.Map<Organizacao>(organizacaoViewModel);
+                organizacao.ValidarEntidade();
+                if (organizacao.Notifications.Count > 0)
+                {
+                    return BadRequest(organizacao.Notifications);
+                }
+
                 var retorno = await _organizacaoService.Incluir(organizacao);
                 if (retorno.Notifications.Count > 0)
                 {
@@ -41,16 +48,23 @@ namespace IRM.WebLeilao.Api.Controllers
             }
             catch (Exception ex)
             {
-                var innerMessage = " [" + ex.Message.NullToString() + "] ";
+                var innerMessage = " [" + ex.InnerException.Message.NullToString() + "] ";
                 return BadRequest(new { message = "Falha ao processar a requisição: " + ex.Message + innerMessage });
             }
         }
 
         [HttpPut("v1/editar")]
-        public async Task<ActionResult> EditarAsync([FromBody] Organizacao organizacao)
+        public async Task<ActionResult> EditarAsync([FromBody] OrganizacaoViewModel organizacaoViewModel)
         {
             try
             {
+                var organizacao = _mapper.Map<Organizacao>(organizacaoViewModel);
+                organizacao.ValidarEntidade();
+                if (organizacao.Notifications.Count > 0)
+                {
+                    return BadRequest(organizacao.Notifications);
+                }
+                
                 var retorno = await _organizacaoService.Alterar(organizacao);
                 if (retorno.Notifications.Count > 0)
                 {
@@ -61,7 +75,7 @@ namespace IRM.WebLeilao.Api.Controllers
             }
             catch (Exception ex)
             {
-                var innerMessage = " [" + ex.Message.NullToString() + "] ";
+                var innerMessage = " [" + ex.InnerException.Message.NullToString() + "] ";
                 return BadRequest(new { message = "Falha ao processar a requisição: " + ex.Message + innerMessage });
             }
         }
@@ -71,17 +85,17 @@ namespace IRM.WebLeilao.Api.Controllers
         {
             try
             {
-                var retorno = await _organizacaoService.Excluir(id);
-                if (retorno.Notifications.Count > 0)
+                var organizacao = await _organizacaoService.Excluir(id);
+                if (organizacao.Notifications.Count > 0)
                 {
-                    return Ok(retorno.Notifications);
+                    return Ok(organizacao.Notifications);
                 }
 
-                return Ok(retorno);
+                return Ok(organizacao);
             }
             catch (Exception ex)
             {
-                var innerMessage = " [" + ex.Message.NullToString() + "] ";
+                var innerMessage = " [" + ex.InnerException.Message.NullToString() + "] ";
                 return BadRequest(new { message = "Falha ao processar a requisição: " + ex.Message + innerMessage });
             }
         }
@@ -91,12 +105,12 @@ namespace IRM.WebLeilao.Api.Controllers
         {
             try
             {
-                var retorno = await _organizacaoService.ObterPorId(id);
-                return Ok(_mapper.Map<OrganizacaoViewModel>(retorno));
+                var organizacao = await _organizacaoService.ObterPorId(id);
+                return Ok(_mapper.Map<OrganizacaoViewModel>(organizacao));
             }
             catch (Exception ex)
             {
-                var innerMessage = " [" + ex.Message.NullToString() + "] ";
+                var innerMessage = " [" + ex.InnerException.Message.NullToString() + "] ";
                 return BadRequest(new { message = "Falha ao processar a requisição: " + ex.Message + innerMessage });
             }
         }
@@ -106,24 +120,16 @@ namespace IRM.WebLeilao.Api.Controllers
         {
             try
             {
-                var retorno = await _organizacaoService.Obter();
-                return Ok(_mapper.Map<IEnumerable<OrganizacaoViewModel>>(retorno));
+                var organizacoes = await _organizacaoService.Obter();
+                return Ok(_mapper.Map<IEnumerable<OrganizacaoViewModel>>(organizacoes));
             }
             catch (Exception ex)
             {
-                var innerMessage = " [" + ex.Message.NullToString() + "] ";
+                var innerMessage = " [" + ex.InnerException.Message.NullToString() + "] ";
                 return BadRequest(new { message = "Falha ao processar a requisição: " + ex.Message + innerMessage });
             }
         }
 
-    }
-
-    internal class OrganizacaoViewModel
-    {
-        public Guid Id { get; set; }
-        public CNPJ CNPJ { get; set; }
-        public RazaoSocial RazaoSocial { get; set; }
-        public NomeFantasia NomeFantasia { get; set; }
     }
 
 }

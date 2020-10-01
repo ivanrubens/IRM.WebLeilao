@@ -8,8 +8,7 @@ namespace IRM.WebLeilao.Api.Configurations
     {
         public static void AddAutoMapperConfiguration(this IServiceCollection services)
         {
-            //services.AddAutoMapper(Assembly.GetAssembly(typeof(DomainToDTOMappingProfile)));
-            services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
+            services.AddAutoMapper(typeof(DomainToViewModelMappingProfile), typeof(ViewModelToDomainMappingProfile));
         }
     }
 }

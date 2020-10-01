@@ -10,13 +10,11 @@ namespace IRM.WebLeilao.Api.Domain.ValueObjects
 
         public CNPJ(string numero)
         {
-
             Numero = numero;
 
             AddNotifications(new Contract()
                 .IsCnpj(numero, "CNPJ.Numero", "CNPJ Inválido.")
             );
-
         }
 
     }

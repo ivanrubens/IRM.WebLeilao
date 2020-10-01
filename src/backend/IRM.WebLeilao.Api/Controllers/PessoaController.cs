@@ -41,7 +41,7 @@ namespace IRM.WebLeilao.Api.Controllers
             }
             catch (Exception ex)
             {
-                var innerMessage = " [" + ex.Message.NullToString() + "] ";
+                var innerMessage = " [" + ex.InnerException.Message.NullToString() + "] ";
                 return BadRequest(new { message = "Falha ao processar a requisição: " + ex.Message + innerMessage });
             }
         }
@@ -61,7 +61,7 @@ namespace IRM.WebLeilao.Api.Controllers
             }
             catch (Exception ex)
             {
-                var innerMessage = " [" + ex.Message.NullToString() + "] ";
+                var innerMessage = " [" + ex.InnerException.Message.NullToString() + "] ";
                 return BadRequest(new { message = "Falha ao processar a requisição: " + ex.Message + innerMessage });
             }
         }
@@ -81,7 +81,7 @@ namespace IRM.WebLeilao.Api.Controllers
             }
             catch (Exception ex)
             {
-                var innerMessage = " [" + ex.Message.NullToString() + "] ";
+                var innerMessage = " [" + ex.InnerException.Message.NullToString() + "] ";
                 return BadRequest(new { message = "Falha ao processar a requisição: " + ex.Message + innerMessage });
             }
         }
@@ -96,7 +96,7 @@ namespace IRM.WebLeilao.Api.Controllers
             }
             catch (Exception ex)
             {
-                var innerMessage = " [" + ex.Message.NullToString() + "] ";
+                var innerMessage = " [" + ex.InnerException.Message.NullToString() + "] ";
                 return BadRequest(new { message = "Falha ao processar a requisição: " + ex.Message + innerMessage });
             }
         }
@@ -111,7 +111,7 @@ namespace IRM.WebLeilao.Api.Controllers
             }
             catch (Exception ex)
             {
-                var innerMessage = " [" + ex.Message.NullToString() + "] ";
+                var innerMessage = " [" + ex.InnerException.Message.NullToString() + "] ";
                 return BadRequest(new { message = "Falha ao processar a requisição: " + ex.Message + innerMessage });
             }
         }
