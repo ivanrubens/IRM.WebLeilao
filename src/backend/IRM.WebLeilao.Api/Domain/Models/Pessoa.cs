@@ -10,9 +10,9 @@ namespace IRM.WebLeilao.Api.Domain.Models
 
         protected Pessoa() { }
 
-        public Pessoa(CPF cPF, NomePessoa nome)
+        public Pessoa(string cPF, NomePessoa nome)
         {
-            CPF = cPF;
+            CPF = new CPF(cPF);
             Nome = nome;
 
             ValidarEntidade();

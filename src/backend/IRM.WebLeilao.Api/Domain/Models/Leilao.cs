@@ -15,9 +15,9 @@ namespace IRM.WebLeilao.Api.Domain.Models
 
         protected Leilao() { }
 
-        public Leilao(NomeGeral nomeLeilao, decimal valorInicial, bool itemUsado, Usuario usuarioResponsavel, DateTime dataAbertura, DateTime dataFinalizacao)
+        public Leilao(string nomeLeilao, decimal valorInicial, bool itemUsado, Usuario usuarioResponsavel, DateTime dataAbertura, DateTime dataFinalizacao)
         {
-            NomeLeilao = nomeLeilao;
+            NomeLeilao = new NomeGeral(nomeLeilao);
             ValorInicial = valorInicial;
             ItemUsado = itemUsado;
             UsuarioResponsavel = usuarioResponsavel;

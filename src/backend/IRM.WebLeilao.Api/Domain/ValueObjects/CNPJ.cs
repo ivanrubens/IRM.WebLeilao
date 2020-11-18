@@ -8,13 +8,17 @@ namespace IRM.WebLeilao.Api.Domain.ValueObjects
     {
         public string Numero { get; private set; }
 
+        // EF 
+        protected CNPJ() { }
+
         public CNPJ(string numero)
         {
-            Numero = numero;
-
             AddNotifications(new Contract()
                 .IsCnpj(numero, "CNPJ.Numero", "CNPJ Inválido.")
             );
+
+            Numero = numero;
+
         }
 
     }

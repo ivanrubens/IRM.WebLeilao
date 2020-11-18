@@ -34,5 +34,9 @@ namespace IRM.WebLeilao.Api.Domain.Models
             AlteracaoTimestamp = DateTime.Now;
             AlteracaoUsuarioId = usuarioId;
         }
+        public void SetarId(Guid id)
+        {
+            Id = id;
+        }
     }
 }

@@ -11,11 +11,11 @@ namespace IRM.WebLeilao.Api.Domain.Models
 
         protected Organizacao() { }
 
-        public Organizacao(CNPJ cNPJ, RazaoSocial razaoSocial, NomeFantasia nomeFantasia)
+        public Organizacao( string cNPJ, string razaoSocial, string nomeFantasia)
         {
-            CNPJ = cNPJ;
-            RazaoSocial = razaoSocial;
-            NomeFantasia = nomeFantasia;
+            CNPJ = new CNPJ(cNPJ);
+            RazaoSocial = new RazaoSocial(razaoSocial);
+            NomeFantasia = new NomeFantasia(nomeFantasia);
 
             ValidarEntidade();
         }

@@ -18,26 +18,33 @@ namespace IRM.WebLeilao.Api.Infra.Data
 
         static string schemaDefault = "webleilao";
 
+        public WebLeilaoContext(DbContextOptions<WebLeilaoContext> options)
+        {
+            ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+            ChangeTracker.AutoDetectChangesEnabled = false;
+        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.HasDefaultSchema(schemaDefault);
 
             modelBuilder.Ignore<Notification>();
+            /* 
             modelBuilder.Entity<Organizacao>().OwnsOne(p => p.CNPJ);
             modelBuilder.Entity<Organizacao>().OwnsOne(p => p.NomeFantasia);
             modelBuilder.Entity<Organizacao>().OwnsOne(p => p.RazaoSocial);
             modelBuilder.Entity<Pessoa>().OwnsOne(p => p.CPF);
             modelBuilder.Entity<Pessoa>().OwnsOne(p => p.Nome);
-            modelBuilder.Entity<Leilao>().OwnsOne(p => p.NomeLeilao);
-
-            //ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
-            //ChangeTracker.AutoDetectChangesEnabled = false;
+            modelBuilder.Entity<Leilao>().OwnsOne(p => p.NomeLeilao); 
+            */
 
             modelBuilder.ApplyConfiguration(new LeilaoMapping());
             modelBuilder.ApplyConfiguration(new OrganizacaoMapping());
             modelBuilder.ApplyConfiguration(new PessoaMapping());
             modelBuilder.ApplyConfiguration(new UsuarioMapping());
+
+            foreach (var relationship in modelBuilder.Model.GetEntityTypes()
+                .SelectMany(e => e.GetForeignKeys())) relationship.DeleteBehavior = DeleteBehavior.ClientSetNull;
 
         }
         protected override void OnConfiguring(DbContextOptionsBuilder options)
