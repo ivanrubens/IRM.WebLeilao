@@ -32,7 +32,6 @@ namespace IRM.WebLeilao.Api.Controllers
             try
             {
                 var organizacao = _mapper.Map<Organizacao>(organizacaoViewModel);
-                organizacao.ValidarEntidade();
                 if (organizacao.Notifications.Count > 0)
                 {
                     return BadRequest(organizacao.Notifications);
@@ -64,7 +63,7 @@ namespace IRM.WebLeilao.Api.Controllers
                 {
                     return BadRequest(organizacao.Notifications);
                 }
-                
+
                 var retorno = await _organizacaoService.Alterar(organizacao);
                 if (retorno.Notifications.Count > 0)
                 {

@@ -31,6 +31,8 @@ namespace IRM.WebLeilao.Api.Controllers
             try
             {
                 var retorno = await _usuarioService.Incluir(usuario);
+                retorno.SetarId(usuario.Id);
+                
                 if (retorno.Notifications.Count > 0)
                 {
                     return Ok(retorno.Notifications);

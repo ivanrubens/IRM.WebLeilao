@@ -8,5 +8,6 @@ namespace IRM.WebLeilao.Api.Application.ViewModel
         public string CNPJ { get; set; }
         public string RazaoSocial { get; set; }
         public string NomeFantasia { get; set; }
+        
     }
 }

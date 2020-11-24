@@ -73,5 +73,10 @@ namespace IRM.WebLeilao.Api.Infra.CrossCutting.Extensions
 
             return regex.Replace(input, " ");
         }
+
+        public static string JustDigits(this string str, string input)
+        {
+            return new string(input.Where(char.IsDigit).ToArray());
+        }
     }
 }

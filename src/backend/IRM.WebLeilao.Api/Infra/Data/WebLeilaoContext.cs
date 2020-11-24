@@ -29,14 +29,12 @@ namespace IRM.WebLeilao.Api.Infra.Data
             modelBuilder.HasDefaultSchema(schemaDefault);
 
             modelBuilder.Ignore<Notification>();
-            /* 
             modelBuilder.Entity<Organizacao>().OwnsOne(p => p.CNPJ);
             modelBuilder.Entity<Organizacao>().OwnsOne(p => p.NomeFantasia);
             modelBuilder.Entity<Organizacao>().OwnsOne(p => p.RazaoSocial);
             modelBuilder.Entity<Pessoa>().OwnsOne(p => p.CPF);
             modelBuilder.Entity<Pessoa>().OwnsOne(p => p.Nome);
             modelBuilder.Entity<Leilao>().OwnsOne(p => p.NomeLeilao); 
-            */
 
             modelBuilder.ApplyConfiguration(new LeilaoMapping());
             modelBuilder.ApplyConfiguration(new OrganizacaoMapping());

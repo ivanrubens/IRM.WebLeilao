@@ -11,7 +11,7 @@ namespace IRM.WebLeilao.Api.Domain.Models
 
         protected Organizacao() { }
 
-        public Organizacao( string cNPJ, string razaoSocial, string nomeFantasia)
+        public Organizacao(string cNPJ, string razaoSocial, string nomeFantasia)
         {
             CNPJ = new CNPJ(cNPJ);
             RazaoSocial = new RazaoSocial(razaoSocial);
