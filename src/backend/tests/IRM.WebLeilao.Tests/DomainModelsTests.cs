@@ -13,17 +13,17 @@ namespace IRM.WebLeilao.Tests
         private Pessoa pessoa;
         private Guid usuarioId;
         private Usuario usuario;
-        private NomeGeral nomeGeral;
+        private string nomeGeral;
         private Guid usuarioLogadoId;
-        
+
         public DomainModelsTests()
         {
             cpf = new CPF("67763044322");
             nomePessoa = new NomePessoa("Fulano de", "Tal");
-            pessoa = new Pessoa(cpf, nomePessoa);
+            pessoa = new Pessoa(cpf.Numero, nomePessoa);
             usuarioId = Guid.NewGuid();
             usuario = new Usuario(pessoa, usuarioId);
-            nomeGeral = new NomeGeral("Leilão 1");
+            nomeGeral = "Leilão 1";
 
             usuarioLogadoId = Guid.NewGuid();
         }
