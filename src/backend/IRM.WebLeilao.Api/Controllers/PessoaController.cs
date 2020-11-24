@@ -32,7 +32,6 @@ namespace IRM.WebLeilao.Api.Controllers
             try
             {
                 var retorno = await _pessoaService.Incluir(pessoa);
-                retorno.SetarId(pessoa.Id);
                 
                 if (retorno.Notifications.Count > 0)
                 {

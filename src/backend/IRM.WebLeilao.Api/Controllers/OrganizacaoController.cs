@@ -29,6 +29,9 @@ namespace IRM.WebLeilao.Api.Controllers
         [HttpPost("v1/incluir")]
         public async Task<ActionResult> IncluirAsync([FromBody] OrganizacaoViewModel organizacaoViewModel)
         {
+            // TODO: Tratar Guid/Id zerado;
+            // TODO: Tratar CNPJ formatado;
+
             try
             {
                 var organizacao = _mapper.Map<Organizacao>(organizacaoViewModel);
