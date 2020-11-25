@@ -29,12 +29,9 @@ namespace IRM.WebLeilao.Api.Controllers
         [HttpPost("v1/incluir")]
         public async Task<ActionResult> IncluirAsync([FromBody] OrganizacaoViewModel organizacaoViewModel)
         {
-            // TODO: Tratar Guid/Id zerado;
-            // TODO: Tratar CNPJ formatado;
-
             try
             {
-                var organizacao = _mapper.Map<Organizacao>(organizacaoViewModel);
+                var organizacao = new Organizacao(organizacaoViewModel.CNPJ, organizacaoViewModel.RazaoSocial, organizacaoViewModel.NomeFantasia);
                 if (organizacao.Notifications.Count > 0)
                 {
                     return BadRequest(organizacao.Notifications);
@@ -60,8 +57,11 @@ namespace IRM.WebLeilao.Api.Controllers
         {
             try
             {
-                var organizacao = _mapper.Map<Organizacao>(organizacaoViewModel);
+                // TODO: Finalizar Editar()
+                var organizacao = new Organizacao(organizacaoViewModel.CNPJ, organizacaoViewModel.RazaoSocial, organizacaoViewModel.NomeFantasia);
+                organizacao.SetarId(organizacaoViewModel.Id);
                 organizacao.ValidarEntidade();
+
                 if (organizacao.Notifications.Count > 0)
                 {
                     return BadRequest(organizacao.Notifications);
@@ -87,6 +87,7 @@ namespace IRM.WebLeilao.Api.Controllers
         {
             try
             {
+                // TODO: Finalizar Excluir()
                 var organizacao = await _organizacaoService.Excluir(id);
                 if (organizacao.Notifications.Count > 0)
                 {
@@ -107,6 +108,7 @@ namespace IRM.WebLeilao.Api.Controllers
         {
             try
             {
+                // TODO: Finalizar ObterPorId()
                 var organizacao = await _organizacaoService.ObterPorId(id);
                 return Ok(_mapper.Map<OrganizacaoViewModel>(organizacao));
             }
@@ -122,6 +124,7 @@ namespace IRM.WebLeilao.Api.Controllers
         {
             try
             {
+                // TODO: Finalizar Obter()
                 var organizacoes = await _organizacaoService.Obter();
                 return Ok(_mapper.Map<IEnumerable<OrganizacaoViewModel>>(organizacoes));
             }
